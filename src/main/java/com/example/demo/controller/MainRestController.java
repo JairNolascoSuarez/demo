@@ -10,6 +10,7 @@ import com.example.demo.controller.EmployeeDAO;
 import com.example.demo.service.EmployeeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +38,16 @@ public class MainRestController {
 		
 	}
 	
+	// message
+	@Value("${message:Hello}")
+	private String message;
+	
+	//message
+	@RequestMapping("/message")
+	String getMessage() {
+		return this.message;
+	}
+
 	
 	// URL - http://localhost:8080/listEmployees
 	@RequestMapping(value = "listEmployees", method = RequestMethod.GET) // or use @GetMapping
